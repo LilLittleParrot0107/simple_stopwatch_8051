@@ -1,6 +1,6 @@
-# Simple_stopwatch_8051
+# Đồng Hồ Bấm Giờ và Đếm Ngược 8051
 
-Chương trình nhắm đến hai chức năng thường có của một chiếc đồng hồ là đếm ngược và bấm giờ. Đây là một chương trình đơn giản viết bằng ngôn ngữ lập trình C cho vi điều khiển 8051. Chương trình sử dụng bàn phím 4x4 để người dùng nhập giá trị và điều khiển đèn 7 đoạn để điều khiển, ngoài ra cung cấp loa để phản hồi quá trình đếm.
+Chương trình này là một đồng hồ đơn giản được phát triển cho vi điều khiển 8051, cung cấp hai chức năng chính là bấm giờ và đếm ngược. Sử dụng ngôn ngữ lập trình C và tích hợp với bàn phím 4x4 và đèn 7 đoạn, chương trình mang lại trải nghiệm tương tác và hiển thị thời gian trên đèn LED.
 
 ## Thiết lập phân cứng
 
@@ -12,9 +12,12 @@ Chương trình nhắm đến hai chức năng thường có của một chiếc
 
 ### Hằng và định nghĩa chân
 
-- **'DELAY_COUNT'**: Hằng số thời gian đợi trong hàm **'delay'**
+- **'DELAY_COUNT_DISPLAY'**: Thời gian chờ hiển thị trên đèn 7 đoạn.
+- **'DELAY_COUNT_SPEED_UP'**: Thời gian chờ khi tăng tốc độ đếm ngược.
+- **'DELAY_COUNT_SPEED_DOWN'**: Thời gian chờ khi giảm tốc độ đếm ngược.
+- **'DELAY_COUNT_COUNTDOWN'**: Thời gian chờ trong quá trình đếm ngược.
+- **'DELAY_COUNT_FINAL_DISPLAY'**: Thời gian chờ hiển thị cuối cùng sau khi đếm ngược kết thúc.
 - **'SPEAKER_PORT'**: Chân được kết nối đến loa
-- Các định nghĩa chân cho bàn phím và led 7 đoạn
 
 ## Khai báo hàm
 
@@ -29,14 +32,15 @@ Chương trình nhắm đến hai chức năng thường có của một chiếc
 
 - Khởi tạo bàn phím.
 - Vào vòng lặp vô hạn, liên tục kiểm tra đầu vào từ bàn phím.
-- Điều chỉnh giá trị đếm ngược dựa trên nút được nhấn (1, 2, 5, 6, 3).
-- Bắt đầu đếm ngược khi nhấn nút 3.
+- Điều chỉnh giá trị đếm ngược dựa trên nút được nhấn (1, 2, 5, 6).
+- Điều chỉnh tốc độ giảm dựa trên nút được nhấn (3, 7)
+- Bắt đầu đếm ngược khi nhấn nút 4.
+- Tạm dừng quá trình giảm khi nhấn giữ nút 8
 
 ## Sử dụng
 
 1. Kết nối phần cứng như mô tả trong phần "Thiết Lập Phần Cứng".
 2. Biên dịch và nạp chương trình vào vi điều khiển 8051.
 3. Bật nguồn và tương tác với bàn phím để đặt giá trị đếm ngược.
-4. Nhấn nút 3 để bắt đầu đếm ngược.
-5. Quan sát giá trị đếm ngược trên đèn 7 đoạn và lắng nghe âm thanh phản hồi.
-
+4. Nhấn nút 4 để bắt đầu đếm ngược.
+5. Quan sát giá trị đếm ngược trên đèn 7 đoạn và lắng nghe âm thanh phản hồi. Nếu muốn tạm dừng quá trình đếm ngược, ấn giữ nút 8.
